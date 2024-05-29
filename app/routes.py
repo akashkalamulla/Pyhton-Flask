@@ -20,10 +20,9 @@ def contact():
     return render_template('sections/contact/contact.html')
 
 # Example of passing a variable to a route
-@web.route('/user/<username>')
+@web.route('/user/<full_name>')
 def user_profile(full_name):
     return render_template('sections/users/user_profile.html', full_name=full_name)
-    # return f'User Profile: {username}'
 
 @web.route('/submit', methods=['GET', 'POST'])
 def submit():

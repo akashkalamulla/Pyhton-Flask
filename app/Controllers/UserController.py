@@ -40,13 +40,19 @@ def login():
 
         user = User.query.filter((User.email == email_or_phone) | (User.phone == email_or_phone)).first()
 
-        if user and bcrypt.check_password_hash(user.password, form.password.data):
-            login_user(user)
-            flash('Login successful!', 'success')
-            return redirect(url_for('web.index'))
+        if user:
+            print(f"Stored hash: {user.password}")  # Debugging: Print the stored hash
+            print(f"Password provided: {form.password.data}")  # Debugging: Print the provided password
+            if bcrypt.check_password_hash(user.password, form.password.data):
+                login_user(user)
+                flash('Login successful!', 'success')
+                return redirect(url_for('web.index'))
+            else:
+                flash('Login failed. Check your phone number or email and Password.', 'danger')
         else:
-            flash('Login failed. Check your phone number or email and Password.', 'danger')
+            flash('User not found.', 'danger')
     return render_template('sections/users/login.html', form=form)
+
 
 def logout():
     logout_user()

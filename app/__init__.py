@@ -21,6 +21,7 @@ def create_app():
     # Initialize extensions (if any)
     db.init_app(app)
     migrate = Migrate(app, db)
+    bcrypt = Bcrypt(app)
     bcrypt.init_app(app)
     login_manager.init_app(app)
     csrf.init_app(app)
