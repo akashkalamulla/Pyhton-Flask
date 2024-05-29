@@ -1,0 +1,11 @@
+{% extends "layout/base.html" %} {% block title %}User Dashboard - My Flask
+App{% endblock %} {% block header %}User Dashboard{% endblock %} {% block
+content %}
+<section>
+  <h1>Email {{user.email}}</h1>
+  <h1>Username for {{user.username}}</h1>
+  <h1>Role for {{user.role}}</h1>
+
+  <a href="{{ url_for('web.index') }}">Back to Home</a>
+</section>
+{% endblock %}

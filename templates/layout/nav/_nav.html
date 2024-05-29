@@ -1,0 +1,13 @@
+<nav>
+  <ul>
+    <li><a href="{{ url_for('web.index') }}">Home</a></li>
+    <li><a href="{{ url_for('web.about') }}">About</a></li>
+    <li><a href="{{ url_for('web.contact') }}">Contact</a></li>
+    {% if current_user.is_authenticated %}
+    <li><a href="{{ url_for('web.dashboard') }}">Dashboard</a></li>
+    <li><a href="{{ url_for('web.logout') }}">Logout</a></li>
+    {% else %}
+    <li><a href="{{ url_for('web.login') }}">Login</a></li>
+    {% endif %}
+  </ul>
+</nav>
